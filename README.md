@@ -24,6 +24,12 @@ In the **`index.js`** the following two variables can be edited: `port` and `fil
 `filename` sets the filename the data will be appended to. If set to `false` defaults to the timestamp of the second when the application was initially started.
 
 ##Usage
+Run the application:
+
+```sh
+node index.js
+```
+
 The application offers one endpoint. It accepts HTTP `POST` requests to the endpoint `/log`.
 
 The body can contain two fields: `line` and `data`. 
@@ -33,7 +39,29 @@ The body can contain two fields: `line` and `data`.
 
 First the contents of `line` (if existent) are added to the log file, the the contents of `data` (if existent).
 
-A success of error message is returned. 
+A success of error message is returned.
+
+##Example
+
+Here is an example POST request using jQuery. A full example can be found in `public/test.html`.
+
+```javascript
+var data = {
+    line: 'This string;will be-added;as a line.', //content will be appended to the file
+    data: {test: 1, moreContent: "yhjkd"} //data will be stringified and appended to line
+};
+$.ajax({
+    type: "POST",
+    url: "/log",
+    data: data,
+    success: function(result) {
+        console.log('success', result);
+    },
+    error: function(err) {
+        console.log('error', err);
+    }
+});
+```
 
 ##Author
 Frederik Brudy

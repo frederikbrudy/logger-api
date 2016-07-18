@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logger API Test</title>
+</head>
+<body>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    $( document ).ready(function() {
+
+        var d = new Date();
+        var data = {
+            line: d.toLocaleString()+';This string;will be-added;as a line.', //content will be appended to the file
+            data: {test: 1, bla: "yhjkd"} //data will be stringified and appended to line
+        };
+        $.ajax({
+            type: "POST",
+            url: "/log",
+            data: data,
+            success: function(result) {
+                console.log('success', result);
+            },
+            error: function(err) {
+                console.log('error', err);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
