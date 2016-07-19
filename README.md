@@ -13,7 +13,7 @@ git clone https://github.com/kopfnuss/logger-api
 
 On your local machine change into the directory and initialise using npm
 ```sh
-npm init
+npm install
 ```
 
 ##Setup
